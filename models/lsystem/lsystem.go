@@ -19,9 +19,7 @@ type LSystem struct {
 	Angle         float64
 }
 
-// FIXME: Can be refactored/removed, \
-// 		!! still need to add constant
-// Ensures string replacement remains consistent
+// FIXME: Can be refactored
 func (S *LSystem) orderRuleMap() {
 	for _, v := range S.constants {
 		S.rules[v] = v
@@ -105,13 +103,12 @@ func KochCurve(n int) LSystem {
 	return lSystem
 }
 
-// GenLSystemString2 replaces strings based on rules
+// GenLSystemString replaces strings based on rules
 func (S *LSystem) GenLSystemString() {
 	if S.c <= S.N {
 		if S.c == 0 {
 			S.LSystemString = fmt.Sprintf("%s", S.axiom)
 		} else {
-			// Iterate through each character in S.last
 			tmp := make([]string, 0)
 			for r := range S.LSystemString {
 				tmp = append(tmp, S.rules[string(S.LSystemString[r])])
