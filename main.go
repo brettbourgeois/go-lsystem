@@ -3,67 +3,31 @@ package main
 
 import (
 	"lsystems/models"
-	"lsystems/models/lsystem"
-	"math"
-
-	"github.com/fogleman/gg"
+	"lsystems/pkg/turtlegraph"
 )
 
 func main() {
-	binaryTree := lsystem.BinaryTree(6)
-	drawFractal(binaryTree, "binaryTree.png")
-
-	kochCurve := lsystem.KochCurve(3)
-	drawFractal(kochCurve, "kochCurve.png")
-
-	sierpinskiTriangle := lsystem.SierpinskiTriangle(4)
-	drawFractal(sierpinskiTriangle, "sTriangle.png")
-
-	sierpinskiArrowHead := lsystem.SierpinskiArrowHead(4)
-	drawFractal(sierpinskiArrowHead, "sArrowhead.png")
-}
-
-func drawFractal(lsystem lsystem.LSystem, fileName string) {
+	canvasSize := models.Vector2{X: 850, Y: 600}
 	canvas := models.Canvas{
-		Height: 1024,
-		Width:  1024,
+		Size:    canvasSize,
+		Padding: 20,
 	}
-	dc := gg.NewContext(int(canvas.Width), int(canvas.Height))
-	turtleGraph(dc, canvas, lsystem)
-	dc.SavePNG("examples/" + fileName)
-}
-func turtleGraph(dc *gg.Context, canvas models.Canvas, lsystem lsystem.LSystem) {
-	vector := models.Vector2{X: canvas.Width / 2, Y: canvas.Height / 2}
-	dc.SetRGB(0, 125, 0)
-	dc.SetLineWidth(2)
-	for i := 0; i < len(lsystem.LSystemString); i++ {
-		switch string(lsystem.LSystemString[i]) {
-		case "0":
-			dc.Translate(0, -5)
-			dc.DrawLine(vector.X, vector.Y, vector.X, vector.Y+5)
-			dc.Stroke()
-		case "1":
-			dc.Translate(0, -5)
-			dc.DrawLine(vector.X, vector.Y, vector.X, vector.Y+5)
-			dc.Stroke()
-		case "[":
-			dc.Push()
-			dc.RotateAbout(-45*math.Pi/180, vector.X, vector.Y)
-		case "]":
-			dc.Pop()
-			dc.RotateAbout(45*math.Pi/180, vector.X, vector.Y)
-		case "F":
-			dc.Translate(-10, 0)
-			dc.DrawLine(vector.X, vector.Y, vector.X+10, vector.Y)
-			dc.Stroke()
-		case "G":
-			dc.Translate(-10, 0)
-			dc.DrawLine(vector.X, vector.Y, vector.X+10, vector.Y)
-			dc.Stroke()
-		case "+":
-			dc.RotateAbout(lsystem.Angle*(math.Pi/180), vector.X, vector.Y)
-		case "-":
-			dc.RotateAbout(-lsystem.Angle*(math.Pi/180), vector.X, vector.Y)
-		}
-	}
+
+	binaryTree := models.BinaryTree(6)
+	turtlegraph.DrawLSystem(binaryTree, canvas.OriginBottomCenter(), "examples/binaryTree.png")
+
+	kochCurve := models.KochCurve(4)
+	turtlegraph.DrawLSystem(kochCurve, canvas.OriginBottomRight(), "examples/kochCurve.png")
+
+	sierpinskiTriangle := models.SierpinskiTriangle(4)
+	turtlegraph.DrawLSystem(sierpinskiTriangle, canvas.OriginCenter(), "examples/sTriangle.png")
+
+	sierpinskiArrowHead := models.SierpinskiArrowHead(4)
+	turtlegraph.DrawLSystem(sierpinskiArrowHead, canvas.OriginCenter(), "examples/sArrowhead.png")
+
+	dragonCurve := models.DragonCurve(10)
+	turtlegraph.DrawLSystem(dragonCurve, canvas.OriginCenter(), "examples/dragonCurve.png")
+
+	barnsleyFern := models.BarnsleyFern(4)
+	turtlegraph.DrawLSystem(barnsleyFern, canvas.OriginCenter(), "examples/fractalplant.png")
 }
