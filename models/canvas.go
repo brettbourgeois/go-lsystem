@@ -16,10 +16,19 @@ func (c *Canvas) OriginCenter() Canvas {
 	return *c
 }
 
+// OriginTopRight centers origin in the 'top right'
+func (c *Canvas) OriginTopRight() Canvas {
+	c.Origin = Vector2{
+		X: c.Size.X - c.Padding,
+		Y: c.Padding,
+	}
+	return *c
+}
+
 // OriginBottomRight centers origin in the 'bottom right'
 func (c *Canvas) OriginBottomRight() Canvas {
 	c.Origin = Vector2{
-		X: c.Size.X -c.Padding,
+		X: c.Size.X - c.Padding,
 		Y: c.Size.Y - c.Padding,
 	}
 	return *c

@@ -14,20 +14,20 @@ func main() {
 	}
 
 	binaryTree := models.BinaryTree(6)
-	turtlegraph.DrawLSystem(binaryTree, canvas.OriginBottomCenter(), "examples/binaryTree.png")
+	turtlegraph.DrawLSystem(binaryTree, canvas.OriginBottomCenter(), "images/binaryTree.png")
 
 	kochCurve := models.KochCurve(4)
-	turtlegraph.DrawLSystem(kochCurve, canvas.OriginBottomRight(), "examples/kochCurve.png")
+	turtlegraph.DrawLSystem(kochCurve, canvas.OriginBottomRight(), "images/kochCurve.png")
 
-	sierpinskiTriangle := models.SierpinskiTriangle(4)
-	turtlegraph.DrawLSystem(sierpinskiTriangle, canvas.OriginCenter(), "examples/sTriangle.png")
+	sierpinskiTriangle := models.SierpinskiTriangle(6)
+	turtlegraph.DrawLSystem(sierpinskiTriangle, canvas.OriginTopRight(), "images/sTriangle.png")
 
-	sierpinskiArrowHead := models.SierpinskiArrowHead(4)
-	turtlegraph.DrawLSystem(sierpinskiArrowHead, canvas.OriginCenter(), "examples/sArrowhead.png")
+	sierpinskiArrowHead := models.SierpinskiArrowHead(6)
+	turtlegraph.DrawLSystem(sierpinskiArrowHead, canvas.OriginBottomRight(), "images/sArrowhead.png")
 
 	dragonCurve := models.DragonCurve(10)
-	turtlegraph.DrawLSystem(dragonCurve, canvas.OriginCenter(), "examples/dragonCurve.png")
+	turtlegraph.DrawLSystem(dragonCurve, canvas.OriginCenter(), "images/dragonCurve.png")
 
 	barnsleyFern := models.BarnsleyFern(4)
-	turtlegraph.DrawLSystem(barnsleyFern, canvas.OriginCenter(), "examples/fractalplant.png")
+	turtlegraph.DrawLSystem(barnsleyFern, canvas.OriginBottomCenter(), "images/fractalplant.png")
 }

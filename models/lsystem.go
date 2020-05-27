@@ -114,13 +114,6 @@ func KochCurve(n int) LSystem {
 	return lSystem
 }
 
-// DragonCurve
-// variables : X Y
-// constants : F + −
-// start : FX
-// rules : (X → X+YF+), (Y → −FX−Y)
-// angle : 90°
-
 // DragonCurve will return an DragonCurve LSystem
 func DragonCurve(n int) LSystem {
 	lSystem := LSystem{
@@ -147,8 +140,8 @@ func BarnsleyFern(n int) LSystem {
 		constants: []string{"+", "-", "<", ">"},
 		axiom:     "X",
 		rules: map[string]string{
-			"X": "F+<<X>-X>-F<-FX>+X)",
-			"F": "FF",
+			"X": "A+<<X>-X>-A<-AX>+X)",
+			"A": "AA",
 		},
 		N:     n,
 		c:     0,

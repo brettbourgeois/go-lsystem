@@ -38,6 +38,14 @@ func turtleGraph(dc *gg.Context, origin models.Vector2, lsystem models.LSystem) 
 			dc.Push()
 		case ">":
 			dc.Pop()
+		case "A":
+			dc.Translate(0, -10)
+			dc.DrawLine(drawVector.X, drawVector.Y, drawVector.X, drawVector.Y+10)
+			dc.Stroke()
+		case "B":
+			dc.Translate(0, -10)
+			dc.DrawLine(drawVector.X, drawVector.Y, drawVector.X, drawVector.Y+10)
+			dc.Stroke()
 		case "F":
 			dc.Translate(-10, 0)
 			dc.DrawLine(drawVector.X, drawVector.Y, drawVector.X+10, drawVector.Y)
