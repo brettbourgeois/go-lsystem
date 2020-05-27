@@ -133,8 +133,8 @@ func DragonCurve(n int) LSystem {
 	return lSystem
 }
 
-// BarnsleyFern will return an BarnsleyFern LSystem
-func BarnsleyFern(n int) LSystem {
+// FractalPlant will return an FractalPlant LSystem
+func FractalPlant(n int) LSystem {
 	lSystem := LSystem{
 		variables: []string{"X", "F"},
 		constants: []string{"+", "-", "<", ">"},

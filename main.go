@@ -28,6 +28,15 @@ func main() {
 	dragonCurve := models.DragonCurve(10)
 	turtlegraph.DrawLSystem(dragonCurve, canvas.OriginCenter(), "images/dragonCurve.png")
 
-	barnsleyFern := models.BarnsleyFern(4)
-	turtlegraph.DrawLSystem(barnsleyFern, canvas.OriginBottomCenter(), "images/fractalplant.png")
+	fractalPlant := models.FractalPlant(4)
+	turtlegraph.DrawLSystem(fractalPlant, canvas.OriginBottomCenter(), "images/fractalplant.png")
+
+	// Generate an image for the README.md
+	canvas = models.Canvas{
+		Size:    models.Vector2{X: 325, Y: 425},
+		Padding: 20,
+	}
+	exampleImage := models.FractalPlant(4)
+	turtlegraph.DrawLSystem(exampleImage, canvas.OriginBottomCenter(), "images/readme-example.png")
+
 }
