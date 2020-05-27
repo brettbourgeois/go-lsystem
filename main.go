@@ -25,11 +25,13 @@ func main() {
 	sierpinskiArrowHead := models.SierpinskiArrowHead(6)
 	turtlegraph.DrawLSystem(sierpinskiArrowHead, canvas.OriginBottomRight(), "images/sArrowhead.png")
 
-	dragonCurve := models.DragonCurve(10)
-	turtlegraph.DrawLSystem(dragonCurve, canvas.OriginCenter(), "images/dragonCurve.png")
-
+	canvas.Padding = 20
 	fractalPlant := models.FractalPlant(4)
 	turtlegraph.DrawLSystem(fractalPlant, canvas.OriginBottomCenter(), "images/fractalplant.png")
+
+	canvas.Padding = 150
+	dragonCurve := models.DragonCurve(10)
+	turtlegraph.DrawLSystem(dragonCurve, canvas.OriginBottomCenter(), "images/dragonCurve.png")
 
 	// Generate an image for the README.md
 	canvas = models.Canvas{

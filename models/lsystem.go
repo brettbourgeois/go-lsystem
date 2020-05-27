@@ -117,12 +117,12 @@ func KochCurve(n int) LSystem {
 // DragonCurve will return an DragonCurve LSystem
 func DragonCurve(n int) LSystem {
 	lSystem := LSystem{
-		variables: []string{"X", "Y"},
+		variables: []string{"A", "B"},
 		constants: []string{"F", "+", "-"},
-		axiom:     "FX",
+		axiom:     "FA",
 		rules: map[string]string{
-			"X": "X+YF+",
-			"Y": "-FX-Y",
+			"A": "A+BF+",
+			"B": "-FA-B",
 		},
 		N:     n,
 		c:     0,
@@ -136,7 +136,7 @@ func DragonCurve(n int) LSystem {
 // FractalPlant will return an FractalPlant LSystem
 func FractalPlant(n int) LSystem {
 	lSystem := LSystem{
-		variables: []string{"X", "F"},
+		variables: []string{"X", "A"},
 		constants: []string{"+", "-", "<", ">"},
 		axiom:     "X",
 		rules: map[string]string{
